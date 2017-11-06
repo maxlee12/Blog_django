@@ -23,6 +23,7 @@
         <h3>发表评论</h3>
         <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
             {% csrf_token %}
+            <h1 class="entry-title">{{ a }}}</h1>
             <div class="row">
                 <div class="col-md-4">
                     <label for="{{ form.name.id_for_label }}">名字：</label>

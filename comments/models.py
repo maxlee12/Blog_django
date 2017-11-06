@@ -15,3 +15,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text[:20]
+
+
+
+@python_2_unicode_compatible
+class Somt(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=255)
+    url = models.URLField(blank=True)
+    text = models.TextField()
+    created_time = models.DateTimeField(auto_now_add=True)
+
+    post = models.ForeignKey('lawBlog.Post')
+
+    def __str__(self):
+        return self.text[:20]
