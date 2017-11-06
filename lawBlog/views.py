@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from django.shortcuts import render, get_object_or_404
 from .models import Post
-from comments.forms import SomtForm
+from comments.forms import CommentForm
 
 # def index(request):
 #     return HttpResponse("欢迎访问我的博客首页！")
@@ -64,7 +64,7 @@ def detail(request, pk):
                                       'markdown.extensions.toc',
                                   ])
     # 记得在顶部导入  SomtForm
-    form = SomtForm()
+    form = CommentForm()
     # 获取这篇 post 下的全部评论
     comment_list = post.comment_set.all()
 
@@ -72,6 +72,5 @@ def detail(request, pk):
     context = {'post': post,
                'SomtForm': form,
                'comment_list': comment_list,
-               'a':3,
                }
     return render(request, 'lawBlog/detail.html', context=context)

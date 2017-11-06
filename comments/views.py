@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Somt
-from .forms import SomtForm
+from .models import Comment
+from .forms import CommentForm
 from lawBlog.models import Post
 
 
@@ -17,7 +17,7 @@ def post_comment(request,post_pk):
     if request.method == 'POST':
         # 用户提交的数据存在 request.POST 中，这是一个类字典对象。
         # 我们利用这些数据构造了 CommentForm 的实例，这样 Django 的表单就生成了。
-        form = SomtForm(request.POST)
+        form = CommentForm(request.POST)
 
         # 当调用 form.is_valid() 方法时，Django 自动帮我们检查表单的数据是否符合格式要求。
         if form.is_valid():
