@@ -31,6 +31,8 @@ def index(request):
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    # 阅读量 +1
+    post.increase_views()
     # 记得在顶部引入 markdown 模块 需要在heml中加入 safe 标签
     post.body = markdown.markdown(post.body,
                                   extensions=[
