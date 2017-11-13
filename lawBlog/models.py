@@ -85,6 +85,10 @@ class Post(models.Model):
     class Meta:
         ordering = ['-created_time']
 
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
+
     # 复写save方法 生成摘要  或者使用 truncatechars 模板过滤器,在模板中使用 {{ post.body | truncatechars:54 }}
     def save(self, *args,**kwargs):
 
