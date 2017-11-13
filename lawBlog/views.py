@@ -39,6 +39,9 @@ class IndexView(ListView):
     template_name = 'lawBlog/index.html'
     context_object_name = 'post_list'
 
+    # 指定 paginate_by 属性后开启分页功能,其值代表每一页包含的文章数量
+    paginate_by = 1
+
 # 归档
 """
 def archives(request, year, month):
