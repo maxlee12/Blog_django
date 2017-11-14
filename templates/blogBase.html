@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block body_container %}
+
+    <main class="col-md-8">
+        {% block main  %}
+        {% endblock main %}
+    </main>
+    <aside class="col-md-4">
+                {% block toc %}
+                {% endblock toc %}
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">最新文章</h3>
+                    {% get_recent_posts as recent_post_list %}
+                    <ul>
+                        {% for post in recent_post_list %}
+                            <li>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </li>
+                        {% empty %}
+                            暂无文章！
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget widget-archives">
+                    <h3 class="widget-title">归档</h3>
+                    {% archives as date_list %}
+                    <ul>
+                        {% for date in date_list %}
+                            <li>
+                                 <a href="{% url 'lawBlog:archives' date.year date.month %}">
+                                    {{ date.year }} 年 {{ date.month }} 月
+                                 </a>
+                            </li>
+                        {% empty %}
+                            暂无归档！
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="widget widget-category">
+                    <h3 class="widget-title">分类</h3>
+                    {% get_categories as category_list %}
+                    <ul>
+                        {% for category in category_list %}
+                            <li>
+                                <a href="{% url 'lawBlog:category' category.pk %}">{{ category.name }}</a>
+                                <span class="post-count">({{ category.num_posts }})</span>
+                            </li>
+                        {% empty %}
+                            暂无分类！
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="widget widget-tag-cloud">
+                    <h3 class="widget-title">标签云</h3>
+                    {% get_tags as tag_list %}
+                    <ul>
+                        {% for tag in tag_list %}
+                        <li>
+                            <a href="#">{{ tag.name }}</a>
+                        </li>
+                        {% empty %}
+                        暂无标签！
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="rss">
+                    <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
+                </div>
+        </aside>
+{% endblock body_container %}
+
+
+
+
+

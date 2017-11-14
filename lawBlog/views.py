@@ -16,6 +16,19 @@ from comments.forms import CommentForm
 #                   })
 
 
+def full_width(request):
+    return render(request, 'lawBlog/blog.html')
+
+def contact(request):
+    return render(request, 'lawBlog/contact.html')
+
+def about(request):
+    return render(request, 'lawBlog/about.html')
+
+
+def Index(request):
+    return render(request, 'lawBlog/index.html')
+
 import markdown
 from .models import Post,Category
 
@@ -34,9 +47,9 @@ def index(request):
 """
 from django.views.generic import ListView
 # 将 index 视图函数改写为类视图
-class IndexView(ListView):
+class BlogView(ListView):
     model = Post
-    template_name = 'lawBlog/index.html'
+    template_name = 'lawBlog/blog.html'
     context_object_name = 'post_list'
 
     # 指定 paginate_by 属性后开启分页功能,其值代表每一页包含的文章数量
@@ -50,7 +63,7 @@ def archives(request, year, month):
                                     ).order_by('-created_time')
     return render(request, 'lawBlog/index.html', context={'post_list': post_list})
 """
-class ArchiveView(IndexView):
+class ArchiveView(BlogView):
     def get_queryset(self):
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
