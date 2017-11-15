@@ -6,6 +6,7 @@ from .models import Post ,Tag
 from comments.forms import CommentForm
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
+from django.db.models import Q
 # def index(request):
 #     return HttpResponse("欢迎访问我的博客首页！")
 
@@ -187,6 +188,22 @@ class TagView(ListView):
     def get_queryset(self):
         tag = get_object_or_404(Tag,pk=self.kwargs.get('pk'))
         return super(TagView, self).get_queryset().filter(tags=tag)
+
+
+
+def search(request):
+    q = request.GET.get('q')
+    error_msg = ''
+    if not q:
+        error_msg = "请输入关键词"
+        return render(request, 'lawBlog/blog.html', {'error_msg': error_msg})
+
+    post_list = Post.objects.filter(Q(title__contains=q)|Q(body__contains=q))
+    return  render(request,'lawBlog/blog.html',
+                   {'error_msg': error_msg,
+                    'post_list': post_list}
+                   )
+
 
 
 
