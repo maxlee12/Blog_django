@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #
+    'haystack', #检索
+    #
     'lawBlog',
     'comments',
+
 ]
 
 MIDDLEWARE = [
@@ -128,3 +132,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # 加入下面的配置
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# 检索配置
+HAYSTACK_CONNECTIONS = { 'default':
+                             { 'ENGINE': 'lawBlog.whoosh_cn_backend.WhooshEngine',
+                               'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+                               },
+                         }
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
