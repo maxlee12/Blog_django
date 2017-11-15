@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post ,Tag
 from comments.forms import CommentForm
 
 # def index(request):
@@ -83,7 +83,7 @@ def category(request, pk):
 
 class CategoryView(ListView):
     model = Post
-    template_name = 'laeBlog/index.html'
+    template_name = 'lawBlog/blog.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
@@ -165,6 +165,14 @@ class PostDetailView(DetailView):
 
 
 
+class TagView(ListView):
+    model = Post
+    template_name = 'lawBlog/blog.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        tag = get_object_or_404(Tag,pk=self.kwargs.get('pk'))
+        return super(TagView, self).get_queryset().filter(tags=tag)
 
 
 
