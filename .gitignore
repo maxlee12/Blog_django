@@ -93,4 +93,5 @@ ENV/
 database/
 media/
 .idea/
+.idea
 *.sqlite3
