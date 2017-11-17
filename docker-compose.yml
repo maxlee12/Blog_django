@@ -1,4 +1,4 @@
-version: '1.0'
+version: '2.0'
 services:
     web:
       restart: always
@@ -6,9 +6,9 @@ services:
       build: ./blog
       # 多行命令
       command: bash -c "python3 manage.py makemigrations &&
-                        python3 manage.py migrate &&
+                        python3 manage.py migrate  &&
                         python3 init_admin.py &&
-                        /usr/local/bin/gunicorn --bind 0.0.0.0:8000 blog.wsgi:application -w 2"
+                        /usr/local/bin/gunicorn --bind 0.0.0.0:8000 blogproject.wsgi:application -w 2"
       # 端口映射(host:container)
       ports:
         - "8000:8000"
