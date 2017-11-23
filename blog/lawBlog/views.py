@@ -3,7 +3,9 @@ from django.http import HttpResponse
 
 from django.shortcuts import render, get_object_or_404
 from .models import Post ,Tag
+from Contacts.forms import ContactForm
 from comments.forms import CommentForm
+
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.db.models import Q
@@ -22,7 +24,9 @@ def full_width(request):
     return render(request, 'lawBlog/blog.html')
 
 def contact(request):
-    return render(request, 'lawBlog/contact.html')
+    form = ContactForm()
+    context = {'contactForm': form}
+    return render(request, 'lawBlog/contact.html',context=context)
 
 def about(request):
     return render(request, 'lawBlog/about.html')

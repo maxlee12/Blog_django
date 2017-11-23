@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #
     'lawBlog',
     'comments',
+    'Contacts',
 
 ]
 
@@ -147,3 +148,13 @@ HAYSTACK_CONNECTIONS = { 'default':
                          }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+#配置邮件相关参数
+
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 465
+EMAIL_HOST_USER = '760822901@qq.com' # 帐号
+EMAIL_HOST_PASSWORD = 'xxeyyxwgppkmbfhj'  # 密码
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
