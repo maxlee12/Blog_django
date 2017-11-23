@@ -94,4 +94,3 @@ database/
 media/
 .idea/
 .idea
-*.sqlite3
