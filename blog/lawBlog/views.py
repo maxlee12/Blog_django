@@ -59,7 +59,7 @@ class BlogView(ListView):
     context_object_name = 'post_list'
 
     # 指定 paginate_by 属性后开启分页功能,其值代表每一页包含的文章数量
-    paginate_by = 1
+    paginate_by = 10
 
 # 归档
 """
