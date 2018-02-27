@@ -28,4 +28,6 @@ urlpatterns = [
     url(r'^search/', include('haystack.urls')),
     #
     url(r'^contact/', include('Contacts.urls')),
+    #
+    url(r'^Itchat/', include('ItchatLearn.urls'),name='ItchatLearn'),
 ]

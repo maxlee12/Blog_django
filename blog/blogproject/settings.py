@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'lawBlog',
     'comments',
     'Contacts',
-
+    #
+    'ItchatLearn',
 ]
 
 MIDDLEWARE = [
