@@ -1,3 +1,6 @@
+
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,8 @@
     <title>Title</title>
 </head>
 <body>
-    <img src={{ path }} width="500" height="500">
+    <img src={% static path %} width="500" height="500">
 </body>
 </html>
+
+

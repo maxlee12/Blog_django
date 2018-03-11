@@ -34,7 +34,7 @@ def login():
     def ec():
         print("exit")
 
-    itchat.auto_login(loginCallback=lc, exitCallback=ec, hotReload=True)
+    itchat.auto_login(loginCallback=lc, exitCallback=ec,hotReload=False,picDir='../static/ItchatLearn/img/QQ.png')
     # 爬取自己好友相关信息， 返回一个json文件
     friends = itchat.get_friends(update=True)[0:]
     return friends;
@@ -188,15 +188,12 @@ def friendImg(friends):
 def main():
 
     friends = login()
-    # 性别
-    sex_ana(friends)
-    # csv信息
-    city_ana(friends)
-    # 签名图
-    singauter(friends)
+    # # 性别
+    # sex_ana(friends)
+    # # csv信息
+    # city_ana(friends)
+    # # 签名图
+    # singauter(friends)
     #头像
     # friendImg(friends)
 
-if __name__ == '__main__':
-    main()
-#登录
