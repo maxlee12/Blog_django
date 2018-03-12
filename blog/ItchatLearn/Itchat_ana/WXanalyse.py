@@ -33,8 +33,12 @@ def login():
         print("Finsh Login!")
     def ec():
         print("exit")
+    pwd = os.getcwd() + '/ItchatLearn/static/ItchatLearn/img/QR.png'
+    itchat.login(picDir=pwd)
+    return
 
-    itchat.auto_login(loginCallback=lc, exitCallback=ec,hotReload=False,picDir='../static/ItchatLearn/img/QQ.png')
+def getFriend():
+
     # 爬取自己好友相关信息， 返回一个json文件
     friends = itchat.get_friends(update=True)[0:]
     return friends;
@@ -187,7 +191,12 @@ def friendImg(friends):
 ###
 def main():
 
-    friends = login()
+    # 登录
+    # login()
+
+    # 获取列表
+    # friends = getFriend()
+
     # # 性别
     # sex_ana(friends)
     # # csv信息
@@ -196,4 +205,6 @@ def main():
     # singauter(friends)
     #头像
     # friendImg(friends)
+
+    pass
 

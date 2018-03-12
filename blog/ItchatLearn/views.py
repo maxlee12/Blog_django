@@ -9,20 +9,13 @@ from .Itchat_ana import WXanalyse
 
 def itchats(request):
 
-
-    WXanalyse.main()
-
-    # 路径
-    # shutil.copy(os.getcwd() + '/' + 'QR.png', '/home/mysite/static/QR.png')
-    # abspath =  os.path.abspath('.')
-    # imaPath = os.path.join(abspath+'/ItchatLearn/Itchat_ana/QR.png')
-    # print('---',imaPath)
-    # imaPath = './ItchatLearn/Itchat_ana/QR.png'
-    # return HttpResponse(image_data, mimetype="image/png")
-
-    imaPath = 'ItchatLearn/img/QQ.png'
-
+    WXanalyse.login()
+    imaPath = 'ItchatLearn/img/QR.png'
     return render_to_response('ItchatLearn/itchats.html', {'path':imaPath})
 
 
-    # return render(request,'ItchatLearn/itchats.html', {'path':imaPath})
+def getFriend(request):
+
+    friends = WXanalyse.getFriend()
+    print(friends)
+    return render_to_response('ItchatLearn/itchats.html', {'path':friends})
