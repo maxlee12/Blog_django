@@ -8,7 +8,17 @@
     <title>Title</title>
 </head>
 <body>
+    <p>{{ msg }}</p>
     <img src={% static path %} width="500" height="500">
+
+{#    {% if msg %}#}
+{#        <p>{{ msg }}</p>#}
+{#    {% else if path %}#}
+{#        <img src={% static path %} width="500" height="500">#}
+{#    {% else %}#}
+{#        <p>无内容</p>#}
+{#    {% endif %}#}
+
 </body>
 </html>
 

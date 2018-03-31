@@ -33,8 +33,9 @@ def login():
         print("Finsh Login!")
     def ec():
         print("exit")
-    pwd = os.getcwd() + '/ItchatLearn/static/ItchatLearn/img/QR.png'
-    itchat.login(picDir=pwd)
+    # pwd = os.getcwd() + '/ItchatLearn/static/ItchatLearn/img/QR.png'
+    # itchat.login(picDir=pwd)
+    itchat.login()
     return
 
 def getFriend():
@@ -192,19 +193,22 @@ def friendImg(friends):
 def main():
 
     # 登录
-    # login()
+    login()
 
     # 获取列表
-    # friends = getFriend()
+    friends = getFriend()
 
-    # # 性别
-    # sex_ana(friends)
-    # # csv信息
-    # city_ana(friends)
-    # # 签名图
-    # singauter(friends)
-    #头像
-    # friendImg(friends)
+    # 性别
+    sex_ana(friends)
+    # csv信息
+    city_ana(friends)
+    # 签名图
+    singauter(friends)
+    # 头像
+    friendImg(friends)
 
     pass
 
+
+if __name__ == '__main__':
+    main()
